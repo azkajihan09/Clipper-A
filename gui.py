@@ -460,7 +460,6 @@ class App(ctk.CTk):
                                               width=140, height=28,
                                               corner_radius=6,
                                               fg_color=COLORS["bg_input"],
-                                              border_color=COLORS["border"],
                                               button_color=COLORS["accent"],
                                               button_hover_color=COLORS["accent_hover"],
                                               dropdown_fg_color=COLORS["bg_card"],
@@ -714,10 +713,15 @@ class App(ctk.CTk):
         return content
 
     def log(self, message):
-        self.log_textbox.configure(state="normal")
-        self.log_textbox.insert("end", f">> {message}\n")
-        self.log_textbox.see("end")
-        self.log_textbox.configure(state="disabled")
+        # Check if log_textbox exists (might not exist during initialization)
+        if hasattr(self, 'log_textbox'):
+            self.log_textbox.configure(state="normal")
+            self.log_textbox.insert("end", f">> {message}\n")
+            self.log_textbox.see("end")
+            self.log_textbox.configure(state="disabled")
+        else:
+            # Fallback to print if GUI not ready
+            print(f">> {message}")
 
     def save_key(self):
         key = self.api_key_entry.get()

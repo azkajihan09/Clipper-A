@@ -3,7 +3,7 @@ ffmpeg-python
 opencv-python
 numpy
 mediapipe
-google-generativeai
+google-genai
 yt-dlp
 python-dotenv
 pillow

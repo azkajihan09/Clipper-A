@@ -1,15 +1,31 @@
-import google.generativeai as genai
+# For now, use the old package with warnings suppressed until user updates
+import warnings
+warnings.filterwarnings('ignore', category=FutureWarning, module='google.generativeai')
+
+try:
+    import google.generativeai as genai
+    GENAI_VERSION = "old"
+    # Suppress the deprecation warning at import
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        # Test basic functionality
+        _ = genai.__version__
+except ImportError:
+    raise ImportError("google-generativeai is not available. Please run UPDATE_GENAI.bat to update packages")
+
 import time
 import json
 import os
 import re
 
-# Optional OpenAI import for Grok
+# Optional OpenAI import for Grok - Catch import errors gracefully
 try:
     from openai import OpenAI
     OPENAI_AVAILABLE = True
-except ImportError:
+except (ImportError, Exception) as e:
+    print(f"OpenAI not available: {e}")
     OPENAI_AVAILABLE = False
+    OpenAI = None
 
 class AIHandler:
     def __init__(self, api_key):
