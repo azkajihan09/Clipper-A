@@ -1,0 +1,13 @@
+customtkinter
+ffmpeg-python
+opencv-python
+numpy
+mediapipe
+google-generativeai
+yt-dlp
+python-dotenv
+pillow
+requests
+youtube-transcript-api==0.6.3
+faster-whisper
+openai

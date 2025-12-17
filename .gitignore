@@ -1,0 +1,35 @@
+/audio_transcriber.py
+
+# Ignore large binary files
+*.exe
+*.msi
+*.dmg
+*.pkg
+
+# Ignore ffmpeg binaries - users should download separately
+BACA DAHULU PENTING !/ffmpeg/bin/
+BACA DAHULU PENTING !/python-3.11.0-amd64.exe
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/
